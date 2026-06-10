@@ -1,8 +1,8 @@
 # Experiment Report: Data Quality Impact on AI Agent
 
-**Student ID:** AI20K-XXXX
-**Name:** (Dien ten cua ban)
-**Date:** (Dien ngay thuc hien)
+**Student ID:** maihanhpham.coco@gmail.com  
+**Name:** Pham Mai Hanh  
+**Date:** 2026-06-10
 
 ---
 
@@ -12,8 +12,8 @@ Chay `agent_simulation.py` voi 2 bo du lieu va ghi lai ket qua:
 
 | Scenario | Agent Response | Accuracy (1-10) | Notes |
 |----------|----------------|-----------------|-------|
-| Clean Data (`processed_data.csv`) | (Ghi cau tra loi cua Agent) | | |
-| Garbage Data (`garbage_data.csv`) | (Ghi cau tra loi cua Agent) | | |
+| Clean Data (`processed_data.csv`) | Agent: Based on my data, the best choice is Laptop at $1200. | 9 | Du lieu da duoc validate va transform, nen agent chon san pham electronics co gia cao nhat trong clean data. |
+| Garbage Data (`garbage_data.csv`) | Agent: Based on my data, the best choice is Nuclear Reactor at $999999. | 2 | Garbage data co outlier rat lon trong category electronics, lam agent dua ra goi y khong hop ly. |
 
 ---
 
@@ -21,15 +21,10 @@ Chay `agent_simulation.py` voi 2 bo du lieu va ghi lai ket qua:
 
 ### Tai sao Agent tra loi sai khi dung Garbage Data?
 
-(Viet nhan xet cua ban o day — it nhat 50 tu)
-
-(Hay phan tich cac van de nhu Duplicate IDs, wrong data types, outliers, null values
-va giai thich tai sao chung anh huong den ket qua cua Agent.)
+Agent tra loi sai khi dung garbage data vi no phu thuoc truc tiep vao chat luong du lieu dau vao. Trong file `garbage_data.csv`, du lieu co duplicate ID, sai kieu du lieu nhu price bang chu, outlier rat lon nhu Nuclear Reactor gia 999999, va gia tri null. Logic cua agent chi loc category electronics va chon dong co price cao nhat, nen outlier se thang du ket qua do khong hop ly. Neu du lieu khong duoc validate truoc, prompt tot van khong the sua duoc tri thuc sai trong bang du lieu. Vi vay, data cleaning va observability rat quan trong truoc khi dua du lieu vao he thong AI.
 
 ---
 
 ## 3. Ket luan
 
-**Quality Data > Quality Prompt?** (Dong y hay khong? Giai thich ngan gon.)
-
-(Viet ket luan cua ban o day)
+**Quality Data > Quality Prompt?** Dong y. Prompt tot co the huong dan agent cach tra loi, nhung neu du lieu nguon bi sai, thieu, trung lap, hoac co outlier, agent van co the dua ra ket qua sai. Chat luong du lieu la nen tang de agent tra loi dung va dang tin cay.
